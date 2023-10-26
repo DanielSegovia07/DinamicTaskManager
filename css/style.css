@@ -1,0 +1,44 @@
+:root{
+    --primary-color: rgb(19, 65, 117);
+    --secondary-color: rgb(24, 81, 146);
+
+    --font-primary-color: #202020;
+    --font-secondary-color: #f6f6f6;
+}
+
+body{
+    display: grid;
+    grid-template-rows: 70px 1fr;
+    color: var(--font-primary-color);
+}
+
+.header{
+    background-color: rgb(19, 65, 117);
+    box-shadow: 0 2px 4px var(--font-primary-color);
+    color: var(--font-secondary-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3em;
+    font-weight: bold;
+}
+
+main{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.side{
+    padding: 8px;
+}
+
+.side:is(:has(canvas), :last-child){
+    display: grid;
+    place-content: center;
+}
+
+#myChart{
+    display: block;
+    height: calc(100vh - 100px) !important;
+    width: 900px !important;
+}

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <!-- MetaDatos -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Titulo -->
+    <title>Administrador de memoria</title>
+
+    <!-- Icono -->
+
+    <!-- Archivos css -->
+    <link rel="stylesheet" href="css/style-reset.css">
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Librerias js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <!-- Encabezado -->
+    <header class="header">
+        <i></i>
+        <h1>Administrado de memoria dinámica</h1>
+    </header>
+
+    <main>
+        <!-- Lado izquierdo de la página (Agregar y ver datos en tablas) -->
+        <section class="side">
+            <!-- seccion para los datos del tamaño de la RAM y el sistema operativo -->
+            <article id="AgregarSistema" class="MemorySection">
+                <div class="section__form">
+                    <div class="section__form-field">
+                        <label for="txtTamanioTotal">Ingrese el tamaño de la RAM</label>
+                        <input type="text" name="txtTamanioTotal" id="txtTamanioTotal">
+
+                        <select name="cmbUnidadesMedidaRAM" id="cmbUnidadesMedidaRAM">
+                            <option value="b">b</option>
+                            <option value="Mb">Mb</option>
+                            <option value="Kb">Kb</option>
+                            <option value="Gb">Gb</option>
+                            <option value="Tb">Tb</option>
+                        </select>
+                    </div>
+
+                    <div class="section__form-field">
+                        <label for="txtTamanioSO">Ingrese el tamaño del sistema operativo</label>
+                        <input type="text" name="txtTamanioSO" id="txtTamanioSO">
+
+                        <select name="cmbUnidadesMedidaSO" id="cmbUnidadesMedidaSO">
+                            <option value="b">b</option>
+                            <option value="Mb">Mb</option>
+                            <option value="Kb">Kb</option>
+                            <option value="Gb">Gb</option>
+                            <option value="Tb">Tb</option>
+                        </select>
+                    </div>
+                </div>
+
+                <table class="table">
+                    <thead>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+
+                    </thead>
+                </table>
+            </article>
+            
+            <!-- seccion para agregar una particion
+            <article id="AgregarParticion" class="MemorySection">
+                <div class="form">
+                    <label for="txtTamanioTotal">Ingrese el tamaño de la particion</label>
+                        <input type="text" name="txtTamanioTotal" id="txtTamanioTotal">
+
+                    <select name="" id="cmbUnidadesMedida">
+                        <option value="b">b</option>
+                        <option value="Mb">Mb</option>
+                        <option value="Kb">Kb</option>
+                        <option value="Gb">Gb</option>
+                        <option value="Tb">Tb</option>
+                    </select>
+                </div>
+
+                <table class=""></table>
+            </article> -->
+
+            <!-- seccion para agregar una tarea -->
+            <article id="AgregarTarea" class="MemorySection">
+                <div class="form">
+                    <label for="txtTamanioTarea">Ingrese el tamaño de la Tarea</label>
+                        <input type="text" name="txtTamanioTarea" id="txtTamanioTarea">
+
+                    <select name="" id="cmbUnidadesMedida">
+                        <option value="b">b</option>
+                        <option value="Mb">Mb</option>
+                        <option value="Kb">Kb</option>
+                        <option value="Gb">Gb</option>
+                        <option value="Tb">Tb</option>
+                    </select>
+                </div>
+
+                <table></table>
+            </article>
+        </section>
+
+        <!-- Lado derecho de la página (Ver gráfica) -->
+        <div class="side">
+            <canvas id="myChart"></canvas>
+        </div>
+    </main>
+
+    <!-- Archivos js -->
+    <script>
+        // Función para generar un color aleatorio en formato RGBA
+        function randomColor() {
+            var r = Math.floor(Math.random() * 256);
+            var g = Math.floor(Math.random() * 256);
+            var b = Math.floor(Math.random() * 256);
+            return 'rgba(' + r + ',' + g + ',' + b + ',0.5)';
+        }
+
+        // Datos iniciales para la gráfica
+        var initialData = {
+            labels: ['Categoría 1'],
+            datasets: [
+                {
+                    label: 'Serie 1',
+                    data: [10, 20, 15, 100],
+                    backgroundColor: randomColor()
+                }
+            ]
+        };
+
+        // Opciones de la gráfica
+        var chartOptions = {
+            scales: {
+                x: {
+                    stacked: true
+                },
+                y: {
+                    stacked: true
+                }
+            }
+        };
+
+        var ctx = document.getElementById('myChart').getContext('2d');
+
+        // Crea la gráfica con los datos iniciales y opciones
+        var myChart = new Chart(ctx, {
+            type: 'bar',
+            data: initialData,
+            options: chartOptions
+        });
+
+        // Función para actualizar los datos de la gráfica con colores aleatorios
+        function updateChart() {
+            // Datos nuevos
+            var newData = {
+                labels: ['Categoría 1', 'Categoría 2', 'Categoría 3'],
+                datasets: [
+                    {
+                        label: 'Serie 1',
+                        data: [15, 25, 20],
+                        backgroundColor: randomColor()
+                    }
+                ]
+            };
+
+            // Actualiza la gráfica
+            myChart.data = newData;
+            myChart.update();
+        }
+
+        // Llama a la función para actualizar la gráfica (por ejemplo, cuando se hace clic en un botón)
+        //updateChart();
+    </script>
+</body>
+</html>
