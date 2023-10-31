@@ -7,7 +7,7 @@ class Memoria {
     }
 
     Inicializar(t, pr) {
-        // Inicializa la memoria con el espacio total y la parte residenteee.
+        // Inicializa la memoria con el espacio total y la parte residenteeee.
         this._dblEspacioTotal = t;
         this._dblParteResidente = pr;
         this._dblEspacioDisponible = t - pr;
